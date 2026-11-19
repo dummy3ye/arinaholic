@@ -1,0 +1,14 @@
+/* TEAM */
+  sagittarius / @arinaholic / @dummy3ye
+  Linux driver patches, embedded systems, simulations and terminal tools.
+  Site: https://arinaholic.me
+  Contact: hi@arinaholic.me
+
+/* THANKS */
+  the Linux kernel community
+  everyone who reads the code
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: Jost (Google Fonts)
+  Software: hand-written HTML, CSS and JavaScript
