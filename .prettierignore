@@ -1,0 +1,7 @@
+node_modules
+.next
+out
+_legacy
+plans
+content
+bun.lock
