@@ -1,0 +1,704 @@
+$pad: clamp(20px, 4vw, 64px);
+$indent: clamp(20px, 10vw, 190px);
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  overflow-x: clip;
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    400 1.125rem/1.6 var(--font-jost),
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+// /setup uses a single gutter for the navbar and the content column.
+body:has(.setup-page) {
+  --setup-left: max(
+    var(--page-pad),
+    calc((100vw - var(--content-max)) / 2 + var(--page-pad))
+  );
+
+  font-size: var(--fs-body);
+  color: var(--ink-body);
+  text-rendering: optimizeLegibility;
+
+  > header {
+    padding-inline: var(--setup-left);
+
+    .logo {
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      font-size: 1rem;
+    }
+  }
+}
+
+.setup-page {
+  h1,
+  h2,
+  h3 {
+    color: var(--ink);
+  }
+
+  h1 {
+    font-size: var(--fs-h1);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+
+  .lede {
+    font-size: var(--fs-lede);
+    color: var(--ink-muted);
+  }
+
+  .hero,
+  .sec {
+    padding-inline: var(--setup-left);
+  }
+
+  .hero {
+    padding-top: clamp(40px, 6vw, 80px);
+    padding-bottom: var(--s-5);
+  }
+
+  .sec {
+    padding-bottom: var(--s-6);
+  }
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+// Only the site navbar is a direct child of body; article <header> elements
+// must not inherit these styles.
+body > header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 44px);
+  flex-wrap: wrap;
+  padding: clamp(18px, 2.6vw, 34px) $pad;
+  transition: transform 0.35s ease;
+
+  &[data-hidden="true"] {
+    transform: translateY(-100%);
+  }
+
+  &[data-scrollable="true"] {
+    background: var(--bg);
+  }
+
+  .logo {
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+
+    .logo-sag {
+      display: inline-block;
+      transition: transform 0.5s ease;
+    }
+
+    .logo-tail {
+      position: relative;
+      top: 1px;
+      display: inline-block;
+      overflow: hidden;
+      max-width: 8ch;
+      transition:
+        max-width 0.5s ease,
+        left 0.5s ease;
+    }
+
+    .logo-tail-long,
+    .logo-tail-short {
+      display: inline-block;
+      top: -0.9px;
+      transition:
+        opacity 0.3s ease,
+        transform 0.5s ease;
+    }
+
+    .logo-tail-short {
+      position: absolute;
+      left: 0;
+      top: -0.9px;
+      opacity: 0;
+      transform: translateX(-12px);
+    }
+
+    &[data-compact="true"] {
+      .logo-sag {
+        transform: translateX(-4px);
+      }
+
+      .logo-tail {
+        left: -4px;
+        max-width: 1ch;
+      }
+
+      .logo-tail-long {
+        opacity: 0;
+        transform: translateX(-12px);
+      }
+
+      .logo-tail-short {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: 0.12s;
+      }
+    }
+  }
+
+  nav {
+    display: flex;
+    gap: clamp(16px, 2.4vw, 34px);
+
+    a {
+      text-decoration: none;
+      font-weight: 500;
+      padding: 3px 0;
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        border-color: var(--line);
+      }
+
+      &[aria-current] {
+        border-color: var(--red);
+      }
+    }
+  }
+}
+
+.page {
+  display: block;
+  position: relative;
+  animation: in 0.7s ease both;
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero,
+.sec {
+  position: relative;
+  z-index: 1;
+  padding-right: $pad;
+  padding-left: $indent;
+}
+
+.hero {
+  padding-top: clamp(36px, 7vw, 110px);
+  padding-bottom: clamp(40px, 6vw, 90px);
+}
+
+.sec {
+  padding-bottom: clamp(40px, 6vw, 100px);
+}
+
+h1 {
+  font-size: clamp(3rem, 8.4vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+  margin: 0 0 clamp(22px, 3vw, 40px);
+  max-width: 10.5em;
+
+  &.sm {
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+  }
+}
+
+.lede {
+  font-size: clamp(1.2rem, 1.9vw, 1.6rem);
+  line-height: 1.45;
+  max-width: 26em;
+  margin: 0;
+}
+
+.muted,
+.row p,
+.list dd {
+  color: var(--muted);
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--muted);
+
+  &:hover {
+    text-decoration-color: var(--red);
+  }
+
+  &.small {
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 64px);
+  max-width: 1280px;
+
+  h2 {
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+    letter-spacing: -0.025em;
+    font-weight: 500;
+    margin: 0 0 0.2em;
+  }
+
+  p {
+    color: var(--muted);
+    margin: 0 0 1em;
+    max-width: 22em;
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(18px, 5vw, 90px);
+  padding: clamp(30px, 4.5vw, 64px) 0;
+  align-items: start;
+
+  h2 {
+    font-size: clamp(2.3rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  h3 {
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    margin: 0.15em 0 0.45em;
+  }
+
+  p {
+    margin: 0 0 0.8em;
+    max-width: 32em;
+  }
+}
+
+.meta {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 0.97rem;
+  color: var(--muted);
+}
+
+.dot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 16px clamp(20px, 4vw, 60px);
+  margin: 0;
+  max-width: 60em;
+
+  dt {
+    font-weight: 500;
+    font-size: 1.25rem;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.big {
+  display: inline-block;
+  font-size: clamp(1.8rem, 5.4vw, 4.6rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 0.5em;
+  overflow-wrap: anywhere;
+
+  &:hover {
+    color: var(--blue);
+  }
+}
+
+.contactIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.contactMail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.22em;
+
+  .contactIcon {
+    width: clamp(18px, 0.55em, 44px);
+    height: clamp(18px, 0.55em, 44px);
+  }
+}
+
+.contactLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 18px;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+
+  .contactLabel {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 6px;
+    text-decoration-color: var(--muted);
+  }
+
+  &:hover .contactLabel {
+    text-decoration-color: var(--red);
+  }
+}
+
+.shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  pointer-events: none;
+  transform: translate(var(--x), var(--y)) translate(-50%, -50%)
+    rotate(var(--r, 0deg)) scale(var(--s, 1));
+  transition: transform 1.3s cubic-bezier(0.65, 0, 0.2, 1);
+}
+
+.blue {
+  --w: min(48vw, 640px);
+  width: var(--w);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+.red {
+  --w: clamp(110px, 14vw, 200px);
+  width: var(--w);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.sage {
+  width: clamp(90px, 12vw, 170px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--sage);
+}
+
+.shapes[data-route="home"] .blue {
+  --x: calc(112vw - var(--w) * 0.5);
+  --y: calc(var(--w) * 0.5 - 8vw);
+}
+
+// The original shapes layer is viewport-sized; keep that for contact so the
+// bottom-right red circle and the sage circle are not clipped to page height.
+.shapes[data-route="contact"] {
+  inset: 0 auto auto 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.shapes[data-route="contact"] .blue {
+  --x: calc(30vw + var(--w) * 0.595);
+  --y: calc(var(--w) * 0.595 - 22vw);
+  --s: 1.19;
+}
+
+.shapes[data-route="home"] .red {
+  --x: calc(100vw - 40px);
+  --y: calc(100vh - 40px);
+}
+
+.shapes[data-route="contact"] .red {
+  --x: calc(96vw - var(--w) * 0.5);
+  --y: calc(100vh + var(--w) * 0.06);
+}
+
+.shapes[data-route="home"] .sage,
+.shapes[data-route="contact"] .sage {
+  --x: 1vw;
+  --y: 79vh;
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  padding: 30px $pad 36px;
+  font-size: 0.97rem;
+  color: var(--muted);
+
+  div {
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      color: var(--ink);
+    }
+  }
+}
+
+// The homepage is a single screen: scale its vertical rhythm with the viewport
+// height so header, content and footer fit together without page scrolling.
+body:has(.shapes[data-route="home"]) {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+
+  body > header {
+    flex: 0 0 auto;
+  }
+
+  main,
+  .page {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero {
+    padding-top: clamp(16px, 5vh, 64px);
+    padding-bottom: clamp(16px, 4vh, 48px);
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, min(8.4vw, 12vh), 8rem);
+    margin-bottom: clamp(14px, 2.5vh, 32px);
+  }
+
+  .lede {
+    font-size: clamp(1.05rem, min(1.9vw, 2.6vh), 1.6rem);
+  }
+
+  .sec {
+    padding-bottom: clamp(16px, 4vh, 48px);
+  }
+
+  footer {
+    flex: 0 0 auto;
+    padding-top: clamp(12px, 2vh, 24px);
+    padding-bottom: clamp(36px, 7vh, 80px);
+  }
+}
+
+@media (max-width: 820px) {
+  :root {
+    --indent: var(--pad);
+  }
+
+  .cols,
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .row {
+    gap: 10px;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+    gap: 2px;
+
+    dd {
+      margin-bottom: 16px;
+    }
+  }
+
+  .blue {
+    --w: 72vw;
+  }
+
+  .sage,
+  .red {
+    display: none;
+  }
+
+  .shapes[data-route="home"] .blue {
+    --x: calc(104vw - var(--w) * 0.5);
+    --y: calc(var(--w) * 0.5 - 24vw);
+  }
+
+  .shapes[data-route="contact"] .blue {
+    --x: 94vw;
+    --y: 18vw;
+    --s: 0.4;
+  }
+
+  // Keep home and contact to one screen on phones — same one-screen structure
+  // as desktop, with phone-tuned type and spacing so nothing has to scroll.
+  body:has(.shapes[data-route="home"]),
+  body:has(.shapes[data-route="contact"]) {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+
+    header {
+      flex: 0 0 auto;
+    }
+
+    main,
+    .page {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero {
+      padding-top: clamp(6px, 2.5vh, 22px);
+      padding-bottom: clamp(8px, 3vh, 26px);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, min(11.5vw, 11vh), 3.6rem);
+      margin-bottom: clamp(6px, 1.4vh, 14px);
+    }
+
+    .lede {
+      font-size: clamp(0.92rem, min(4vw, 2.5vh), 1.2rem);
+      line-height: 1.4;
+    }
+
+    .sec {
+      padding-bottom: clamp(6px, 2.5vh, 20px);
+    }
+
+    .cols {
+      grid-template-columns: 1fr;
+      gap: clamp(4px, 1.6vh, 14px);
+      max-width: none;
+    }
+
+    .cols h2 {
+      font-size: clamp(1.3rem, min(6.5vw, 3.8vh), 1.75rem);
+      margin-bottom: 0.05em;
+    }
+
+    .cols p {
+      margin: 0 0 0.3em;
+      font-size: 0.88rem;
+      line-height: 1.45;
+      max-width: 100%;
+    }
+
+    .cols .link {
+      font-size: 0.82rem;
+    }
+  }
+
+  // The contact shapes layer is 100vh by default; on mobile browsers 100vh can
+  // be taller than the visible viewport, which makes the page scroll even when
+  // the content fits. Pin it to the one-screen box instead.
+  body:has(.shapes[data-route="contact"]) .shapes {
+    height: 100dvh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    animation: none;
+  }
+
+  .shape,
+  body > header,
+  .logo,
+  .logo * {
+    transition: none;
+  }
+
+  .setup-page *,
+  .setup-page *::before,
+  .setup-page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

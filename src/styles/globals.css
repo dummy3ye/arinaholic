@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:
+    var(--font-jost), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-paper: var(--bg);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand-blue: var(--llvm);
+  --color-brand-red: var(--debug);
+}
+
+:root {
+  /* surfaces */
+  --bg: #f7f4ec;
+  --bg-raised: #faf8f2;
+  --line: #e3ddcf;
+  --line-strong: #cfc8b6;
+
+  /* text */
+  --ink: #15151d;
+  --ink-body: #3a3a45;
+  --ink-muted: #5f5f6b;
+
+  /* diagram semantics */
+  --llvm: #3a5bc7;
+  --native: #15151d;
+  --runtime: #6f8f63;
+  --runtime-soft: #b9cbae;
+  --debug: #c23b52;
+
+  /* type scale */
+  --fs-label: 12px;
+  --fs-small: 13px;
+  --fs-body: 16px;
+  --fs-lede: clamp(18px, 1.6vw, 22px);
+  --fs-h2: clamp(26px, 2.6vw, 34px);
+  --fs-h1: clamp(64px, 12vw, 160px);
+
+  /* spacing */
+  --s-1: 8px;
+  --s-2: 16px;
+  --s-3: 24px;
+  --s-4: 32px;
+  --s-5: 48px;
+  --s-6: 72px;
+  --s-7: 112px;
+
+  /* layout */
+  --page-pad: clamp(20px, 4vw, 64px);
+  --content-max: 1200px;
+  --radius: 10px;
+
+  /* legacy aliases used by the rest of the site */
+  --muted: var(--ink-muted);
+  --blue: var(--llvm);
+  --red: var(--debug);
+  --sage: color-mix(in srgb, #7a9e6b 45%, var(--bg));
+  --pad: var(--page-pad);
+  --indent: clamp(20px, 10vw, 190px);
+
+  /* canvas bridge: colors only, resolved through computed style */
+  --c-cream: var(--bg);
+  --c-bg-raised: var(--bg-raised);
+  --c-line-strong: var(--line-strong);
+  --c-ink: var(--ink);
+  --c-ink-body: var(--ink-body);
+  --c-gray: var(--ink-muted);
+  --c-blue: var(--llvm);
+  --c-sage: var(--runtime);
+  --c-runtime-soft: var(--runtime-soft);
+  --c-red: var(--debug);
+
+  color-scheme: light;
+}
+
+/* Phones: solid navbar on every page except home and contact (which keep the
+   transparent navbar). Pure CSS so the background appears from first paint,
+   even if the dev bundle never hydrates. The React rule in Header.tsx sets
+   the same result, so the two never disagree. */
+@media (max-width: 820px) {
+  body > header {
+    background: var(--bg);
+  }
+
+  body:has(.shapes[data-route="home"]) > header,
+  body:has(.shapes[data-route="contact"]) > header {
+    background: transparent;
+  }
+}
