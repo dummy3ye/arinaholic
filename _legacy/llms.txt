@@ -1,0 +1,15 @@
+# sagittarius
+
+> drivers, terminals & small simulations. Personal site of sagittarius, also known as @arinaholic and @dummy3ye. Linux kernel driver patches, embedded systems, simulations and fast tools for the terminal.
+
+- [Homepage](https://arinaholic.me/): overview of work, kernel contributions, setup and contact details.
+- [Works](https://arinaholic.me/works): projects and smaller things.
+- [Kernel](https://arinaholic.me/kernel): Linux driver patches and what I test.
+- [Setup](https://arinaholic.me/setup): languages and daily setup.
+- [Contact](https://arinaholic.me/contact): email, discord, github.
+- [Full content](https://arinaholic.me/llms-full.txt): the complete site content in plain markdown.
+
+## Contact
+
+- Email: hi@arinaholic.me
+- GitHub: https://github.com/dummy3ye

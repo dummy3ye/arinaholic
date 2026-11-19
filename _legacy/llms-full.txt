@@ -1,0 +1,73 @@
+# sagittarius
+
+drivers, terminals & small simulations.
+
+I'm sagittarius, I also go by @arinaholic and @dummy3ye. I send patches to the Linux kernel, build embedded systems and simulations, and write fast tools for the terminal.
+
+## Work
+
+Stuff I made. Mostly open source, mostly CLI/TUI, and a few websites and simulations.
+
+- notebook — scientific publishing. Built with Bun, Next.js, marked and KaTeX. https://github.com/dummy3ye/notebook
+- blackholegl — a black hole in C++ and OpenGL; a simulation of Gargantua. 6 stars, 2 forks. https://github.com/dummy3ye/blackholegl
+- lostdock — a GUI dorking tool made for OSINT. https://github.com/dummy3ye/lostdock
+- shell — my desktop shell, built with Quickshell. https://github.com/dummy3ye/shell
+- waytosea — a pastel theme based on a stormy sea. https://github.com/dummy3ye/waytosea
+
+Smaller things:
+
+- yanker — downloads videos from YouTube and 500+ other sites from a single TUI. https://github.com/dummy3ye/yanker
+- anily — a blazing fast TUI for watching anime, in Rust. https://github.com/dummy3ye/anily
+- topscreen — a GUI and press feature for your screen over ADB and scrcpy. https://github.com/dummy3ye/topscreen
+- libcreate — finally adds an "e" to the Unix creat(). https://github.com/dummy3ye/libcreate
+- prism — a pretty, cozy and frosty Neovim configuration. https://github.com/dummy3ye/prism
+- flamer — https://github.com/dummy3ye/flamer
+- forest — https://github.com/dummy3ye/forest
+
+There's more on my other site: https://home.osky.dpdns.org
+
+## Kernel
+
+I send patches to the Linux kernel, and test a few drivers along the way.
+
+What I send: mostly small fixes in drivers — wifi, media, usb, uvc and staging.
+
+What I test: Intel backlight, rtw88 and uvc. I test and contribute to all three.
+
+Everything is public:
+
+- All my patches on lore.kernel.org — https://lore.kernel.org/all/?q=reza1234khan1234@gmail.com
+- Kernel source tree — https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+- Patch docs — https://docs.kernel.org/process/submitting-patches.html
+
+## Setup
+
+What I write with, and what I write on.
+
+Languages: C, TypeScript and Python, plus a bit of Rust, Go, C++ and Lua.
+
+Daily setup:
+
+- system: Arch Linux
+- desktop: Hyprland with Waybar
+- terminal: Kitty and fish
+- editor: Neovim, with my own config called prism — https://github.com/dummy3ye/prism
+
+## Contact
+
+Email is best for kernel and project questions. Discord is good for chatting.
+
+- email: hi@arinaholic.me
+- discord: 3yeonly_
+- github: https://github.com/dummy3ye
+- twitter: https://x.com/3yeonly_
+- instagram: https://instagram.com/unyerner
+- other site: https://home.osky.dpdns.org
+
+## Routes
+
+- https://arinaholic.me/ — overview
+- https://arinaholic.me/works — projects and smaller things
+- https://arinaholic.me/kernel — Linux driver patches and testing
+- https://arinaholic.me/setup — languages and daily setup
+- https://arinaholic.me/contact — email and social links
