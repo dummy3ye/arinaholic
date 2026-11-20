@@ -72,12 +72,14 @@ function useDismiss(
 function Dropdown({
   label,
   buttonLabel,
+  buttonAriaLabel,
   menuLabel,
   multi = false,
   children,
 }: {
   label: string;
   buttonLabel: ReactNode;
+  buttonAriaLabel?: string;
   menuLabel: string;
   multi?: boolean;
   children: (close: () => void) => ReactNode;
@@ -129,7 +131,7 @@ function Dropdown({
         className={styles.control}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label={label}
+        aria-label={buttonAriaLabel ?? label}
         onClick={() => setOpen((value) => !value)}
       >
         {buttonLabel}
@@ -304,6 +306,7 @@ export function Gallery({ items }: { items: ResearchMeta[] }) {
         <div className={styles.controlGroup}>
           <Dropdown
             label="sort"
+            buttonAriaLabel={`sort: ${SORT_LABEL[sort]}`}
             menuLabel="sort papers"
             buttonLabel={SORT_LABEL[sort]}
           >

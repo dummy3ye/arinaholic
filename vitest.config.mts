@@ -6,7 +6,7 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./src/test/setup.ts"],
     include: ["**/*.test.{ts,tsx}"],
-    exclude: ["node_modules/**", ".next/**", "_legacy/**"],
+    exclude: ["node_modules/**", ".next/**", "_legacy/**", "e2e/**"],
   },
   resolve: {
     alias: {

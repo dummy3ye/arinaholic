@@ -5,5 +5,11 @@
     "src/**/*.{css,scss}!",
     "!_legacy/**",
     "!_legacy/**!"
-  ]
+  ],
+  "playwright": {
+    "entry": ["e2e/**/*.spec.ts"]
+  },
+  "vitest": {
+    "entry": ["src/**/*.test.{ts,tsx}"]
+  }
 }

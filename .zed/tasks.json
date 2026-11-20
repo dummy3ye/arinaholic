@@ -1,0 +1,136 @@
+[
+  {
+    "label": "dev",
+    "command": "bun",
+    "args": ["run", "dev"],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "check",
+    "command": "bun",
+    "args": ["run", "check"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "build",
+    "command": "bun",
+    "args": ["run", "build"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "start",
+    "command": "bun",
+    "args": ["run", "start"],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "lint",
+    "command": "bun",
+    "args": ["run", "lint"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "lint:fix",
+    "command": "bun",
+    "args": ["run", "lint:fix"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "lint:styles",
+    "command": "bun",
+    "args": ["run", "lint:styles"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "lint:commit",
+    "command": "bun",
+    "args": ["run", "lint:commit"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "format",
+    "command": "bun",
+    "args": ["run", "format"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "format:check",
+    "command": "bun",
+    "args": ["run", "format:check"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "typecheck",
+    "command": "bun",
+    "args": ["run", "typecheck"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "knip",
+    "command": "bun",
+    "args": ["run", "knip"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "test",
+    "command": "bun",
+    "args": ["run", "test"],
+    "reveal": "always",
+    "hide": "on_success"
+  },
+  {
+    "label": "test:watch",
+    "command": "bun",
+    "args": ["run", "test:watch"],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "test:e2e",
+    "command": "bun",
+    "args": ["run", "test:e2e"],
+    "reveal": "always",
+    "hide": "on_success"
+  },
+  {
+    "label": "test:e2e:install",
+    "command": "bun",
+    "args": ["run", "test:e2e:install"],
+    "reveal": "always",
+    "hide": "on_success"
+  },
+  {
+    "label": "storybook",
+    "command": "bun",
+    "args": ["run", "storybook"],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "build-storybook",
+    "command": "bun",
+    "args": ["run", "build-storybook"],
+    "reveal": "always",
+    "hide": "never"
+  }
+]

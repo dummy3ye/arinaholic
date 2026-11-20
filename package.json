@@ -18,6 +18,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:install": "playwright install chromium",
     "knip": "knip",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -35,9 +37,11 @@
     "react-dom": "19.3.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
     "@biomejs/biome": "2.6.8",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
+    "@playwright/test": "1.65.1",
     "@storybook/nextjs-vite": "10.6.8",
     "@tailwindcss/postcss": "4.3.5",
     "@testing-library/dom": "^10.4.2",
