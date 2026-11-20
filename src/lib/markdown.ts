@@ -42,10 +42,16 @@ function extractMath(source: string) {
 }
 
 function slugify(text: string, seen: Map<string, number>): string {
+  let stripped = text;
+  let previous: string;
+  do {
+    previous = stripped;
+    stripped = stripped.replace(/<[^>]*>/g, "");
+  } while (stripped !== previous);
+
   const base =
-    text
+    stripped
       .toLowerCase()
-      .replace(/<[^>]*>/g, "")
       .replace(/[^\p{L}\p{N}\s-]/gu, "")
       .trim()
       .replace(/\s+/g, "-") || "section";
