@@ -1,0 +1,12 @@
+#!/bin/sh
+# Append the required co-author trailer to every local commit message.
+set -eu
+
+message_file=$1
+trailer="Co-authored-by: nonvez <smd831213@gmail.com>"
+
+if git interpret-trailers --parse < "$message_file" | grep -Fqx "$trailer"; then
+  exit 0
+fi
+
+git interpret-trailers --trailer "$trailer" --in-place "$message_file"
