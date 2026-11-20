@@ -7,6 +7,12 @@ export default defineConfig({
     setupFiles: ["./src/test/setup.ts"],
     include: ["**/*.test.{ts,tsx}"],
     exclude: ["node_modules/**", ".next/**", "_legacy/**", "e2e/**"],
+    coverage: {
+      provider: "istanbul",
+      reporter: ["text", "lcov"],
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["src/**/*.test.{ts,tsx}", "src/test/**"],
+    },
   },
   resolve: {
     alias: {

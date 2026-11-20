@@ -35,6 +35,15 @@ Vitest specs live beside the code as `*.test.ts(x)`:
 bun run test
 ```
 
+To generate a coverage report in `coverage/`, run:
+
+```sh
+bun run test:coverage
+```
+
+CI uploads `coverage/lcov.info` to Codecov when the `CODECOV_TOKEN`
+repository secret is configured.
+
 Playwright specs live in `e2e/`. Install the browser once, then run them:
 
 ```sh
@@ -76,6 +85,12 @@ fix(navbar): keep the header visible on short pages
 
 Research posts live in `content/research/`. Use `_example.md` as the template;
 files starting with `_` are ignored by the site loader.
+
+## Dependency updates
+
+Renovate is the sole dependency update bot. Its repository configuration is in
+`renovate.json`, and it runs through the Mend Renovate GitHub App. Dependabot
+version updates are disabled to avoid duplicate pull requests.
 
 ## Security
 
