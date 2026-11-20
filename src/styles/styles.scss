@@ -379,8 +379,8 @@ h1 {
   gap: 0.22em;
 
   .contactIcon {
-    width: clamp(18px, 0.55em, 44px);
-    height: clamp(18px, 0.55em, 44px);
+    width: 1em;
+    height: 1em;
   }
 }
 
@@ -391,22 +391,26 @@ h1 {
   gap: 6px 18px;
 }
 
-.contactLink {
+.contactLink,
+.contactDiscord {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+}
+
+.contactLink {
   text-decoration: none;
+}
 
-  .contactLabel {
-    text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 6px;
-    text-decoration-color: var(--muted);
-  }
+.contactLabel {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--muted);
+}
 
-  &:hover .contactLabel {
-    text-decoration-color: var(--red);
-  }
+.contactLink:hover .contactLabel {
+  text-decoration-color: var(--red);
 }
 
 .shapes {
