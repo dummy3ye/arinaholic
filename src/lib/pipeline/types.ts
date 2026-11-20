@@ -1,9 +1,9 @@
 export type Lane = "llvm" | "native" | "runtime";
 export type HighlightLane = Lane | "debug";
 export type Color = "blue" | "sage" | "ink" | "red" | "cream";
-export type Kind = "lang" | "tool" | "ir" | "backend" | "target" | "stage";
+type Kind = "lang" | "tool" | "ir" | "backend" | "target" | "stage";
 
-export type PNode = {
+type PNode = {
   id: string;
   label: string;
   short?: string;
@@ -18,7 +18,7 @@ export type PNode = {
   href?: string;
 };
 
-export type Route = {
+type Route = {
   id: string;
   label: string;
   lane: Lane;
@@ -28,7 +28,7 @@ export type Route = {
   chipLabel?: string;
 };
 
-export type Continuation = { to: string; weight: number };
+type Continuation = { to: string; weight: number };
 
 export type Loop = {
   id: string;

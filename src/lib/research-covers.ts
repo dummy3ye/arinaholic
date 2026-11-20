@@ -1,7 +1,6 @@
 // Shared cover preset data, used both by the loader (validation) and the
 // cover component (rendering) so the two can never drift apart.
 export const COVER_BGS = ["cream", "blue", "sage", "red"] as const;
-export type CoverBg = (typeof COVER_BGS)[number];
 
 export const COVER_SHAPES = {
   "blue-large": { color: "var(--blue)", r: 46, cx: 78, cy: 22 },

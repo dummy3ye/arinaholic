@@ -37,6 +37,18 @@
       "problemMatcher": []
     },
     {
+      "label": "lint:styles",
+      "type": "shell",
+      "command": "bun run lint:styles",
+      "problemMatcher": []
+    },
+    {
+      "label": "knip",
+      "type": "shell",
+      "command": "bun run knip",
+      "problemMatcher": []
+    },
+    {
       "label": "format",
       "type": "shell",
       "command": "bun run format",
@@ -64,6 +76,24 @@
       "label": "build",
       "type": "shell",
       "command": "bun run build",
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "storybook",
+      "type": "shell",
+      "command": "bun run storybook",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "build-storybook",
+      "type": "shell",
+      "command": "bun run build-storybook",
       "problemMatcher": [],
       "group": "build"
     }

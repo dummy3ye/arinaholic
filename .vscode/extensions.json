@@ -3,6 +3,7 @@
     "biomejs.biome",
     "vitest.explorer",
     "bradlc.vscode-tailwindcss",
+    "stylelint.vscode-stylelint",
     "editorconfig.editorconfig"
   ]
 }

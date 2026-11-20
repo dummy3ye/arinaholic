@@ -240,5 +240,3 @@ export function getResearch(slug: string): ResearchItem | null {
 export function getAllSlugs(): string[] {
   return getAllResearch().map((item) => item.slug);
 }
-
-export { formatResearchDate } from "./dates";

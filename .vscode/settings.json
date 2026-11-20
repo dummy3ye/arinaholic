@@ -13,6 +13,8 @@
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "scss"],
   "search.exclude": {
     "**/.next": true,
     "**/node_modules": true,
