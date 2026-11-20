@@ -1,0 +1,9 @@
+#!/bin/sh
+# Fast checks that must pass before a commit is created.
+set -eu
+
+printf '%s\n' "Running pre-commit checks..."
+
+bun run lint
+bun run format:check
+bun run typecheck

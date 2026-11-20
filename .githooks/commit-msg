@@ -1,0 +1,19 @@
+#!/bin/sh
+# Enforce conventional commit subjects, e.g. "fix(navbar): align setup header".
+set -eu
+
+message_file=$1
+subject=$(sed -n '1p' "$message_file")
+
+# Git-generated commits should not be blocked by this convention.
+case "$subject" in
+  "Merge "*|"Revert "*|"fixup! "*|"squash! "*) exit 0 ;;
+esac
+
+pattern='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9._/-]+\))?!?: .+'
+
+if ! printf '%s\n' "$subject" | grep -Eq "$pattern"; then
+  printf '%s\n' "error: commit message must be conventional: type(scope): subject" >&2
+  printf '%s\n' "example: fix(navbar): align setup header" >&2
+  exit 1
+fi
