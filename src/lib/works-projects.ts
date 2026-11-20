@@ -1,7 +1,7 @@
 // Main projects shown on /works, straight from the GitHub API plus linguist
 // colors, fetched 2026-11-20. Language entries are the top entries of each
 // repository's languages endpoint, sorted by bytes; no stars, no forks.
-export type WorkLanguage = { name: string; color: string };
+type WorkLanguage = { name: string; color: string };
 
 export type WorkProject = {
   name: string;

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "project": [
+    "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}!",
+    "src/**/*.{css,scss}!",
+    "!_legacy/**",
+    "!_legacy/**!"
+  ]
+}

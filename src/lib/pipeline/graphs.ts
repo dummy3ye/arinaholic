@@ -1,4 +1,4 @@
-import type { Graph, HighlightLane, Selection } from "./types";
+import type { Graph, HighlightLane } from "./types";
 
 // TODO(user): confirm the radius weights — these are a first guess at how much
 // each language is actually used. Raise/lower `r` to change particle frequency.
@@ -581,15 +581,6 @@ export function chipGroups(graph: Graph): { label: string; ids: string[] }[] {
     else groups.push({ label: route.chipLabel, ids: [route.id] });
   }
   return groups;
-}
-
-export function isSelected(selection: Selection | null, routeId: string) {
-  if (selection?.kind !== "route") return false;
-  return (selection.ids ?? [selection.id]).includes(routeId);
-}
-
-export function laneOf(graph: Graph, routeId: string) {
-  return graph.routes.find((route) => route.id === routeId)?.lane ?? "native";
 }
 
 export function describeLane(lane: HighlightLane): string {
