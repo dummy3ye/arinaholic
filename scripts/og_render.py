@@ -88,7 +88,7 @@ title = font(116, "Medium")
 tracked(76, 231, "sagittarius", title, INK, -4.6)
 
 sub = font(35, "Regular")
-lines = wrap("drivers, terminals & small simulations.", sub, 700)
+lines = wrap("coffee, terminals and painful debugging.", sub, 700)
 for i, line in enumerate(lines):
     d.text((80, 383 + i * 50), line, font=sub, fill=MUTED)
 
