@@ -200,10 +200,13 @@ function listItems(): ResearchItem[] {
   if (!fs.existsSync(CONTENT_DIR)) {
     return [];
   }
-  return fs
-    .readdirSync(CONTENT_DIR)
-    .filter((file) => file.endsWith(".md"))
-    .map(parseResearchFile);
+  return (
+    fs
+      .readdirSync(CONTENT_DIR)
+      // Underscore-prefixed files are templates, not publishable entries.
+      .filter((file) => file.endsWith(".md") && !file.startsWith("_"))
+      .map(parseResearchFile)
+  );
 }
 
 function visibleInProduction(items: ResearchItem[]): ResearchItem[] {
