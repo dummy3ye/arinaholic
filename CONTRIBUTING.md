@@ -22,6 +22,11 @@ If you use VS Code, open `arinaholic.code-workspace`, then run **Dev Containers:
 Open Workspace in Container...**. The dev container installs Bun 1.4.2 and Node
 24, installs dependencies, and forwards ports `3000` and `6006`.
 
+If you use Zed, the project-local settings, tasks, and debug configurations are
+in `.zed/`. Install the [Biome extension](https://zed.dev/extensions/biome) to
+get formatting and organize-imports on save. Run tasks such as `check`,
+`test:e2e`, and `storybook` from Zed's task launcher.
+
 ## Tests
 
 Vitest specs live beside the code as `*.test.ts(x)`:
