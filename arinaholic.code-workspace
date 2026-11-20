@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "name": "arinaholic",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "explorer.compactFolders": false,
+    "workbench.editor.enablePreview": false
+  }
+}
