@@ -18,6 +18,13 @@ describe("research loader", () => {
     }
   });
 
+  it("ignores underscore-prefixed template files", () => {
+    expect(getAllSlugs()).not.toContain("_example");
+    expect(getAllResearch().some((item) => item.slug.startsWith("_"))).toBe(
+      false,
+    );
+  });
+
   it("validates each item against the research meta contract", () => {
     for (const item of getAllResearch()) {
       expect(item.title.length).toBeGreaterThan(0);
