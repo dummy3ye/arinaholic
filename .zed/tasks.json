@@ -95,6 +95,13 @@
     "hide": "on_success"
   },
   {
+    "label": "test:coverage",
+    "command": "bun",
+    "args": ["run", "test:coverage"],
+    "reveal": "always",
+    "hide": "on_success"
+  },
+  {
     "label": "test:watch",
     "command": "bun",
     "args": ["run", "test:watch"],
