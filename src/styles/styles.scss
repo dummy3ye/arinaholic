@@ -35,25 +35,13 @@ body:has(.setup-page) {
     var(--page-pad),
     calc((100vw - var(--content-max)) / 2 + var(--page-pad))
   );
+}
 
+.setup-page {
   font-size: var(--fs-body);
   color: var(--ink-body);
   text-rendering: optimizeLegibility;
 
-  > header {
-    padding-inline: var(--setup-left);
-
-    .logo {
-      font-size: 1.5rem;
-    }
-
-    nav a {
-      font-size: 1rem;
-    }
-  }
-}
-
-.setup-page {
   h1,
   h2,
   h3 {
