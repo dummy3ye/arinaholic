@@ -6,6 +6,10 @@
 
 <!-- e.g. Closes #123 -->
 
+## How tested
+
+<!-- Commands run, screenshots for UI changes, affected browsers/viewports. -->
+
 ## Checklist
 
 - [ ] `bun run check` passes locally
