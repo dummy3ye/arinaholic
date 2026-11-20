@@ -1,0 +1,7 @@
+#!/bin/sh
+# Keep the test suite green before anything leaves this machine.
+set -eu
+
+printf '%s\n' "Running pre-push tests..."
+
+bun run test
