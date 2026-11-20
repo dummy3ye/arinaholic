@@ -163,12 +163,12 @@ export function createPipeline(
   graph: Graph,
   opts: Options,
 ) {
-  const ctx = canvas.getContext("2d")!;
+  const maybeCtx = canvas.getContext("2d");
   const bgLayer = document.createElement("canvas");
-  const bgCtx = bgLayer.getContext("2d")!;
+  const maybeBgCtx = bgLayer.getContext("2d");
   const fgLayer = document.createElement("canvas");
-  const fgCtx = fgLayer.getContext("2d")!;
-  if (!ctx || !bgCtx || !fgCtx) {
+  const maybeFgCtx = fgLayer.getContext("2d");
+  if (!maybeCtx || !maybeBgCtx || !maybeFgCtx) {
     return {
       resize() {},
       setSelection() {},
@@ -177,6 +177,9 @@ export function createPipeline(
       destroy() {},
     };
   }
+  const ctx = maybeCtx;
+  const bgCtx = maybeBgCtx;
+  const fgCtx = maybeFgCtx;
 
   let theme: Theme = readTheme();
   let width = 0;
@@ -581,9 +584,9 @@ export function createPipeline(
       if (edge.loop) {
         const point = loopLabelPoint(edge);
         const y = loopLabelY(edge, point);
-        const metrics = measureLabel(edge.loop!.label);
+        const metrics = measureLabel(edge.loop.label);
         addInk(
-          `label:${edge.loop!.id}`,
+          `label:${edge.loop.id}`,
           textBox(
             point.x,
             y,
@@ -703,15 +706,19 @@ export function createPipeline(
       if (route.lane !== lane) continue;
       routes.add(route.id);
       const chain = reachableChain(route.id);
-      chain.nodes.forEach((id) => nodes.add(id));
-      chain.edges.forEach((key) => edgeKeys.add(key));
+      chain.nodes.forEach((id) => {
+        nodes.add(id);
+      });
+      chain.edges.forEach((key) => {
+        edgeKeys.add(key);
+      });
     }
     return { nodes, edges: edgeKeys, routes };
   }
 
   function loopIsHovered(loop: Loop) {
     if (hoverLoopId === loop.id) return true;
-    if (!selection || selection.kind !== "node") return false;
+    if (selection?.kind !== "node") return false;
     return (
       loopIds(loop).includes(selection.id) ||
       (loop.to ? loop.to === selection.id : false) ||
@@ -736,16 +743,24 @@ export function createPipeline(
         const chain = reachableChain(route.id);
         if (chain.nodes.has(active.id)) {
           routes.add(route.id);
-          chain.nodes.forEach((id) => nodes.add(id));
-          chain.edges.forEach((key) => edgeKeys.add(key));
+          chain.nodes.forEach((id) => {
+            nodes.add(id);
+          });
+          chain.edges.forEach((key) => {
+            edgeKeys.add(key);
+          });
         }
       }
     } else {
       for (const id of active.ids ?? [active.id]) {
         routes.add(id);
         const chain = reachableChain(id);
-        chain.nodes.forEach((item) => nodes.add(item));
-        chain.edges.forEach((key) => edgeKeys.add(key));
+        chain.nodes.forEach((item) => {
+          nodes.add(item);
+        });
+        chain.edges.forEach((key) => {
+          edgeKeys.add(key);
+        });
       }
     }
 
@@ -778,10 +793,12 @@ export function createPipeline(
     const debugIds = new Set<string>();
     for (const loop of graph.loops) {
       if (loop.id !== "debug") continue;
-      loopIds(loop).forEach((id) => debugIds.add(id));
-      (loop.toIds ?? (loop.to ? [loop.to] : [])).forEach((id) =>
-        debugIds.add(id),
-      );
+      loopIds(loop).forEach((id) => {
+        debugIds.add(id);
+      });
+      (loop.toIds ?? (loop.to ? [loop.to] : [])).forEach((id) => {
+        debugIds.add(id);
+      });
     }
     if (active.kind === "node") return debugIds.has(active.id);
     return (active.ids ?? [active.id]).some((id) => debugIds.has(id));
@@ -806,7 +823,7 @@ export function createPipeline(
     }
     const active = Boolean(
       highlight &&
-      [...highlight.edges].some((key) => key.startsWith(`loop:${loop.id}:`)),
+        [...highlight.edges].some((key) => key.startsWith(`loop:${loop.id}:`)),
     );
     return {
       opacity: active ? 1 : 0.6,
@@ -1139,8 +1156,7 @@ export function createPipeline(
 
     const loop = loopFor(arrived);
     if (loop && particle.loopCount < 4) {
-      const chance =
-        loop.chance * Math.pow(loop.decay ?? 0.5, particle.loopCount);
+      const chance = loop.chance * (loop.decay ?? 0.5) ** particle.loopCount;
       const edge = loopEdgeFor(loop, arrived);
       if (edge && Math.random() < chance) {
         particle.edge = edge;

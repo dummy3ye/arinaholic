@@ -1,5 +1,10 @@
 export type RouteKey =
-  "home" | "works" | "research" | "kernel" | "setup" | "contact";
+  | "home"
+  | "works"
+  | "research"
+  | "kernel"
+  | "setup"
+  | "contact";
 
 export type Route = {
   key: RouteKey;

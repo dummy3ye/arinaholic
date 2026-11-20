@@ -1,3 +1,4 @@
+// biome-ignore-all lint/security/noDangerouslySetInnerHtml: article HTML comes from trusted repository Markdown rendered by the local pipeline.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";

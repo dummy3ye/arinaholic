@@ -1,6 +1,6 @@
-import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Fragment } from "react";
 import { Hero } from "@/components/content/Hero";
 import { PageShell } from "@/components/content/PageShell";
 import { mainProjects, smallProjects } from "@/lib/works-projects";

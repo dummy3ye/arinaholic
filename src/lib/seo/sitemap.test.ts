@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import sitemap from "@/lib/seo/sitemap";
 import { routes } from "@/lib/navigation/routes";
+import sitemap from "@/lib/seo/sitemap";
 
 describe("sitemap", () => {
   it("lists every route once as an absolute URL", () => {

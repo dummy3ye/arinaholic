@@ -41,14 +41,15 @@ export function ResearchCover({
         className={styles.art}
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid slice"
+        role="presentation"
       >
         <rect width="100" height="100" fill={BACKGROUND[cover.bg]} />
-        {cover.shapes.map((name, index) => {
+        {cover.shapes.map((name) => {
           const shape = COVER_SHAPES[name as keyof typeof COVER_SHAPES];
           if (!shape) return null;
           return (
             <circle
-              key={`${name}-${index}`}
+              key={name}
               cx={shape.cx}
               cy={shape.cy}
               r={shape.r}
