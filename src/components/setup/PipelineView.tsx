@@ -1,14 +1,14 @@
 "use client";
 
 import {
+  type CSSProperties,
+  type ReactNode,
   useCallback,
   useEffect,
   useId,
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
-  type ReactNode,
 } from "react";
 import { createPipeline } from "@/lib/pipeline/engine";
 import {
@@ -186,19 +186,20 @@ export function PipelineView({
   const tooltipNode = hover
     ? graph.nodes.find((node) => node.id === hover.id)
     : null;
-  const tooltipStyle: CSSProperties | undefined = tooltipNode
-    ? (() => {
-        const centre = hover!.x + hover!.width / 2;
-        const preferred = centre + 12;
-        const flipped = preferred + TOOLTIP_WIDTH > frameSize.w - 8;
-        const left = flipped ? centre - TOOLTIP_WIDTH - 12 : preferred;
-        const maxLeft = Math.max(8, frameSize.w - TOOLTIP_WIDTH - 8);
-        return {
-          left: `${Math.max(8, Math.min(left, maxLeft))}`,
-          top: `${Math.max(8, Math.min(hover!.y - 6, frameSize.h - 70))}`,
-        };
-      })()
-    : undefined;
+  const tooltipStyle: CSSProperties | undefined =
+    tooltipNode && hover
+      ? (() => {
+          const centre = hover.x + hover.width / 2;
+          const preferred = centre + 12;
+          const flipped = preferred + TOOLTIP_WIDTH > frameSize.w - 8;
+          const left = flipped ? centre - TOOLTIP_WIDTH - 12 : preferred;
+          const maxLeft = Math.max(8, frameSize.w - TOOLTIP_WIDTH - 8);
+          return {
+            left: `${Math.max(8, Math.min(left, maxLeft))}`,
+            top: `${Math.max(8, Math.min(hover.y - 6, frameSize.h - 70))}`,
+          };
+        })()
+      : undefined;
 
   const selectGroup = (ids: string[]) => {
     setHover(null);
@@ -225,9 +226,8 @@ export function PipelineView({
 
   const controls = (
     <div className={styles.controls}>
-      <div
+      <fieldset
         className={styles.pills}
-        role="group"
         aria-label={showChips ? "choose a language route" : "diagram controls"}
       >
         {showChips &&
@@ -257,7 +257,7 @@ export function PipelineView({
             show debug loop
           </button>
         )}
-      </div>
+      </fieldset>
       <p className={styles.hint}>
         <span className={styles.hintHover}>
           {hintBase}
@@ -291,6 +291,7 @@ export function PipelineView({
               className={styles.canvas}
               ref={canvasRef}
               aria-hidden="true"
+              tabIndex={-1}
             />
             <figcaption className={styles.srOnly}>
               <span id={titleId}>{label}.</span>
@@ -335,7 +336,7 @@ export function PipelineView({
         {liveText}
       </p>
 
-      <div className={styles.nodeIndex} aria-label="diagram nodes">
+      <div className={styles.nodeIndex}>
         {graph.nodes.map((node) => (
           <button
             type="button"

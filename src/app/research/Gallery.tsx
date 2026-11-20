@@ -1,12 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import type { ReactNode, KeyboardEvent as ReactKeyboardEvent } from "react";
-import type { ResearchMeta } from "@/lib/research";
-import { formatResearchDate } from "@/lib/dates";
+import type { KeyboardEvent as ReactKeyboardEvent, ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ResearchCard } from "@/components/research/ResearchCard";
+import { formatResearchDate } from "@/lib/dates";
+import type { ResearchMeta } from "@/lib/research";
 import styles from "./research.module.scss";
 
 type SortKey = "recent" | "oldest" | "az";
@@ -145,7 +145,6 @@ function Dropdown({
           onKeyDown={onMenuKeyDown}
         >
           {/* close only reads buttonRef from an event handler, never during render. */}
-          {/* eslint-disable-next-line react-hooks/refs -- render prop callback is invoked on click */}
           {children(close)}
         </div>
       )}
@@ -333,7 +332,7 @@ export function Gallery({ items }: { items: ResearchMeta[] }) {
             )}
           </Dropdown>
 
-          <div className={styles.viewToggle} role="group" aria-label="view">
+          <fieldset className={styles.viewToggle} aria-label="view">
             <button
               type="button"
               aria-pressed={view === "gallery"}
@@ -348,7 +347,7 @@ export function Gallery({ items }: { items: ResearchMeta[] }) {
             >
               list
             </button>
-          </div>
+          </fieldset>
 
           <label className={styles.search}>
             <span className={styles.srOnly}>search research</span>

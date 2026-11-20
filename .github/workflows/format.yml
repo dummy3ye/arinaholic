@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   format:
-    name: Prettier
+    name: Biome
     runs-on: ubuntu-latest
 
     steps:

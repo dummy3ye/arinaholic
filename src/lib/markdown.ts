@@ -1,6 +1,6 @@
-import { Marked } from "marked";
-import type { Token } from "marked";
 import katex from "katex";
+import type { Token } from "marked";
+import { Marked } from "marked";
 
 export type TocEntry = { id: string; text: string; depth: 2 | 3 };
 export type RenderedMarkdown = { html: string; toc: TocEntry[] };

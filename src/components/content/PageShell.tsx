@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import type { RouteKey } from "@/lib/navigation/routes";
 import { Shapes } from "@/components/decor/Shapes";
+import type { RouteKey } from "@/lib/navigation/routes";
 
 // Decorative circles are only shown on the home and contact pages.
 const shapeRoutes = new Set<RouteKey>(["home", "contact"]);

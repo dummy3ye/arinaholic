@@ -1,9 +1,11 @@
+// biome-ignore-all lint/security/noDangerouslySetInnerHtml: JSON-LD is generated from local static metadata.
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Jost } from "next/font/google";
 import "@/styles/globals.css";
 import "@/styles/styles.scss";
 import { Header } from "@/components/layout/Header";
-import { personSchema, siteDescription as description } from "@/lib/seo/site";
+import { siteDescription as description, personSchema } from "@/lib/seo/site";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -63,6 +65,7 @@ export default function RootLayout({
         />
         <Header />
         {children}
+        {process.env.VERCEL ? <SpeedInsights /> : null}
       </body>
     </html>
   );

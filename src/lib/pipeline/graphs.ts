@@ -584,7 +584,7 @@ export function chipGroups(graph: Graph): { label: string; ids: string[] }[] {
 }
 
 export function isSelected(selection: Selection | null, routeId: string) {
-  if (!selection || selection.kind !== "route") return false;
+  if (selection?.kind !== "route") return false;
   return (selection.ids ?? [selection.id]).includes(routeId);
 }
 

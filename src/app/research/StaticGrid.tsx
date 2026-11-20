@@ -1,5 +1,5 @@
-import type { ResearchMeta } from "@/lib/research";
 import { ResearchCard } from "@/components/research/ResearchCard";
+import type { ResearchMeta } from "@/lib/research";
 import styles from "./research.module.scss";
 
 // Server-rendered fallback shown by Suspense until the interactive gallery

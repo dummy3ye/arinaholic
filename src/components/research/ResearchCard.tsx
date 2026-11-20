@@ -1,9 +1,9 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import type { ResearchMeta } from "@/lib/research";
 import { formatResearchDate } from "@/lib/dates";
-import { ResearchCover } from "./ResearchCover";
+import type { ResearchMeta } from "@/lib/research";
 import styles from "./ResearchCard.module.scss";
+import { ResearchCover } from "./ResearchCover";
 
 export function ResearchCard({ item }: { item: ResearchMeta }) {
   return (
