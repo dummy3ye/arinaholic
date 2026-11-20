@@ -2,6 +2,10 @@ node_modules
 .next
 out
 storybook-static
+test-results
+playwright-report
+blob-report
+playwright/.cache
 .env*.local
 *.tsbuildinfo
 .DS_Store
