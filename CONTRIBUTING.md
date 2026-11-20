@@ -41,8 +41,8 @@ To generate a coverage report in `coverage/`, run:
 bun run test:coverage
 ```
 
-CI uploads `coverage/lcov.info` to Codecov using the `CODECOV_TOKEN`
-repository secret.
+CI uploads `coverage/lcov.info` to Codecov when the `CODECOV_TOKEN`
+repository secret is configured.
 
 Playwright specs live in `e2e/`. Install the browser once, then run them:
 
