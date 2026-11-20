@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Nav } from "./Nav";
 
-const HIDE_AFTER = 300;
+const HIDE_AFTER = 600;
 const MIN_DELTA = 2;
 
 function getScrollY() {

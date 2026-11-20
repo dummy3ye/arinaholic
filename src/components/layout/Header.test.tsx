@@ -52,11 +52,15 @@ describe("Header", () => {
     const header = container.querySelector("header");
     expect(header).not.toHaveAttribute("data-hidden");
 
-    setScrollY(400);
+    setScrollY(500);
+    fireEvent.scroll(window);
+    expect(header).not.toHaveAttribute("data-hidden");
+
+    setScrollY(700);
     fireEvent.scroll(window);
     expect(header).toHaveAttribute("data-hidden", "true");
 
-    setScrollY(380);
+    setScrollY(680);
     fireEvent.scroll(window);
     expect(header).not.toHaveAttribute("data-hidden");
   });
