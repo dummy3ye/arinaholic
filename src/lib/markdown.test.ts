@@ -53,4 +53,37 @@ describe("renderMarkdown", () => {
     const { html } = renderMarkdown("| a | b |\n| --- | --- |\n| 1 | 2 |\n");
     expect(html).toContain('<div class="table-wrap">');
   });
+
+  it("renders plain images without a figure wrapper", () => {
+    const { html } = renderMarkdown("![plain](/covers/a.jpg)\n");
+    expect(html).toContain(
+      '<img src="/covers/a.jpg" alt="plain" loading="lazy" decoding="async">',
+    );
+    expect(html).not.toContain("<figure");
+  });
+
+  it("renders captioned images as figures with alignment", () => {
+    const { html } = renderMarkdown(
+      '![diagram](/covers/a.jpg "figure 1: the pipeline | right")\n',
+    );
+    expect(html).toContain('<figure data-align="right">');
+    expect(html).toContain("<figcaption>figure 1: the pipeline</figcaption>");
+    expect(html).not.toContain("<p><figure");
+  });
+
+  it("groups images between grid markers for side-by-side layout", () => {
+    const { html } = renderMarkdown(
+      [
+        "<!-- grid -->",
+        "",
+        '![one](/a.jpg "one | left")',
+        "",
+        '![two](/b.jpg "two | right")',
+        "",
+        "<!-- /grid -->",
+      ].join("\n"),
+    );
+    expect(html).toContain("<div data-figure-grid>");
+    expect(html.match(/<figure/g)).toHaveLength(2);
+  });
 });

@@ -88,6 +88,23 @@ function inlineText(tokens: Token[] | undefined): string {
     .join("");
 }
 
+function escapeAttribute(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function escapeText(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+const IMAGE_ALIGNMENTS = ["left", "right", "center"] as const;
+
 export function renderMarkdown(source: string): RenderedMarkdown {
   const { masked, math } = extractMath(source);
   const toc: TocEntry[] = [];
@@ -113,6 +130,25 @@ export function renderMarkdown(source: string): RenderedMarkdown {
           ? ' target="_blank" rel="noopener noreferrer"'
           : "";
         return `<a href="${href}"${attrs}>${inner}</a>`;
+      },
+      image({ href, title, text }) {
+        const segments = (title ?? "")
+          .split("|")
+          .map((segment) => segment.trim());
+        const caption = segments[0] ?? "";
+        const options = segments.slice(1).map((option) => option.toLowerCase());
+        const alignment = IMAGE_ALIGNMENTS.find((item) =>
+          options.includes(item),
+        );
+
+        const image = `<img src="${escapeAttribute(href)}" alt="${escapeAttribute(text)}" loading="lazy" decoding="async">`;
+        if (!caption && !alignment) return image;
+
+        const alignAttr = alignment ? ` data-align="${alignment}"` : "";
+        const captionTag = caption
+          ? `<figcaption>${escapeText(caption)}</figcaption>`
+          : "";
+        return `<figure${alignAttr}>${image}${captionTag}</figure>`;
       },
     },
   });
@@ -140,6 +176,19 @@ export function renderMarkdown(source: string): RenderedMarkdown {
   html = html.replace(
     /<table[\s\S]*?<\/table>/g,
     (table) => `<div class="table-wrap">${table}</div>`,
+  );
+
+  // Images are inline tokens, so marked wraps figures in paragraphs. Unwrap
+  // them to keep the HTML valid and let CSS own the figure layout.
+  html = html.replace(
+    /<p>\s*((?:<figure[\s\S]*?<\/figure>\s*)+)<\/p>/g,
+    (_match, figures: string) => figures.trim(),
+  );
+
+  // <!-- grid --> ... <!-- /grid --> groups consecutive figures side by side.
+  html = html.replace(
+    /<!--\s*grid\s*-->([\s\S]*?)<!--\s*\/\s*grid\s*-->/g,
+    (_match, inner: string) => `<div data-figure-grid>${inner}</div>`,
   );
 
   return { html, toc };
