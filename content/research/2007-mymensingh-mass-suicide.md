@@ -4,7 +4,7 @@ summary: "a case study of the 11 july 2007 deaths in kashor, mymensingh: the fam
 date: "2026-11-21"
 category: "case study"
 tags: ["bangladesh", "psychology", "belief systems", "family", "2007"]
-status: "draft"
+status: "published"
 authors:
   - "Sage"
   - "Claude Mythos 5.2"
