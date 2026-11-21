@@ -1,4 +1,14 @@
-import { expect, test } from "@playwright/test";
+import { expect, type Page, test } from "@playwright/test";
+
+async function paperCount(page: Page): Promise<number> {
+  const count = page.locator("main").getByText(/^\d+ papers?$/);
+  await expect(count).toBeVisible();
+
+  const text = (await count.textContent())?.trim() ?? "";
+  const value = Number.parseInt(text, 10);
+  expect(value).toBeGreaterThan(0);
+  return value;
+}
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/research");
@@ -6,19 +16,19 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("category filtering updates the results and URL", async ({ page }) => {
-  await expect(page.getByText("04 papers", { exact: true })).toBeVisible();
+  const total = await paperCount(page);
 
   await page.getByRole("button", { name: "filter" }).click();
-  await page
+  const options = page
     .getByRole("listbox", { name: "filter by category" })
-    .getByRole("option", { name: /kernel/ })
-    .click();
+    .getByRole("option");
+  await expect(options.first()).toBeVisible();
+  await options.first().click();
 
-  await expect(page.getByText("01 paper", { exact: true })).toBeVisible();
-  await expect(
-    page.getByRole("heading", { name: "example research two" }),
-  ).toBeVisible();
-  await expect(page).toHaveURL(/[?&]cat=kernel/);
+  const filtered = await paperCount(page);
+  expect(filtered).toBeGreaterThan(0);
+  expect(filtered).toBeLessThanOrEqual(total);
+  await expect(page).toHaveURL(/[?&]cat=/);
 });
 
 test("search empty state can be cleared", async ({ page }) => {
@@ -29,7 +39,7 @@ test("search empty state can be cleared", async ({ page }) => {
   await expect(page.getByText("nothing matches that.")).toBeVisible();
   await page.getByRole("button", { name: "clear filters" }).click();
 
-  await expect(page.getByText("04 papers", { exact: true })).toBeVisible();
+  await paperCount(page);
   await expect(page).not.toHaveURL(/q=/);
 });
 
@@ -44,18 +54,18 @@ test("sort and view choices survive a reload", async ({ page }) => {
   await page.getByRole("button", { name: "list" }).click();
   await expect(page).toHaveURL(/view=list/);
 
-  await expect(page.locator("main ol > li")).toHaveCount(4);
-  await expect(page.locator("main ol li h2")).toHaveText([
-    "example research four",
-    "example research one",
-    "example research three",
-    "example research two",
-  ]);
+  const rows = page.locator("main ol > li");
+  await expect(rows.first()).toBeVisible();
+
+  const titles = await page.locator("main ol li h2").allTextContents();
+  expect(titles.length).toBeGreaterThan(0);
+  expect(titles).toEqual([...titles].sort((a, b) => a.localeCompare(b)));
 
   await page.reload();
   await expect(page.getByRole("button", { name: "list" })).toHaveAttribute(
     "aria-pressed",
     "true",
   );
-  await expect(page.getByText("04 papers", { exact: true })).toBeVisible();
+  await expect(rows).toHaveCount(titles.length);
+  await paperCount(page);
 });

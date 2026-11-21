@@ -21,7 +21,9 @@ export type ResearchMeta = {
     width?: number;
     height?: number;
   };
+  /** @deprecated Use `authors` for new entries. */
   author?: string;
+  authors?: string[];
   links: { label: string; href: string }[];
 };
 
@@ -180,6 +182,17 @@ function parseResearchFile(fileName: string): ResearchItem {
     fail(file, `frontmatter "author" must be a string when set`);
   }
 
+  const authors = data.authors;
+  if (authors !== undefined) {
+    const names = expectStringArray(authors, "authors", file);
+    if (names.some((name) => name.trim() === "")) {
+      fail(file, `frontmatter "authors" must contain non-empty strings`);
+    }
+    if (author !== undefined) {
+      fail(file, `use "authors" or "author", not both`);
+    }
+  }
+
   return {
     slug,
     title,
@@ -199,6 +212,9 @@ function parseResearchFile(fileName: string): ResearchItem {
         : {}),
     },
     ...(author !== undefined ? { author: author.trim() } : {}),
+    ...(authors !== undefined
+      ? { authors: (authors as string[]).map((name) => name.trim()) }
+      : {}),
     links,
     content,
   };

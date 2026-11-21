@@ -7,6 +7,7 @@ import { PageShell } from "@/components/content/PageShell";
 import { MetaPanel } from "@/components/research/MetaPanel";
 import { ResearchCover } from "@/components/research/ResearchCover";
 import { Toc } from "@/components/research/Toc";
+import { formatAuthors } from "@/lib/authors";
 import { renderMarkdown } from "@/lib/markdown";
 import { getAllResearch, getAllSlugs, getResearch } from "@/lib/research";
 import styles from "./article.module.scss";
@@ -57,6 +58,7 @@ export default async function ResearchArticlePage({
   const { html, toc } = renderMarkdown(item.content);
   const pdf = item.links.find((link) => link.label.toLowerCase() === "pdf");
   const title = item.title.endsWith(".") ? item.title : `${item.title}.`;
+  const authors = item.authors ?? (item.author ? [item.author] : []);
 
   const ordered = getAllResearch();
   const index = ordered.findIndex((entry) => entry.slug === item.slug);
@@ -86,7 +88,7 @@ export default async function ResearchArticlePage({
               aspectRatio="16 / 9"
               className={styles.heroMedia}
             />
-            <p className={styles.credit}>by {item.author ?? "sage"}</p>
+            <p className={styles.credit}>by {formatAuthors(authors)}</p>
           </div>
 
           <details className={styles.tocMobile}>
