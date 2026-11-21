@@ -20,10 +20,16 @@ export function ResearchCover({
   aspectRatio?: string;
 }) {
   const classes = [styles.cover, className].filter(Boolean).join(" ");
+  const imageRatio =
+    cover.width && cover.height ? `${cover.width} / ${cover.height}` : null;
 
   if (cover.image) {
     return (
-      <div className={classes} style={{ aspectRatio }} aria-hidden="true">
+      <div
+        className={classes}
+        style={{ aspectRatio: imageRatio ?? aspectRatio }}
+        aria-hidden="true"
+      >
         <Image
           src={cover.image}
           alt=""

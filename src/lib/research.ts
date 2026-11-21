@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { readLocalImageSize } from "./image-size";
 import { COVER_BGS, COVER_SHAPE_NAMES } from "./research-covers";
 
 export type ResearchMeta = {
@@ -17,6 +18,8 @@ export type ResearchMeta = {
     bg: "cream" | "blue" | "sage" | "red";
     shapes: string[];
     image?: string;
+    width?: number;
+    height?: number;
   };
   author?: string;
   links: { label: string; href: string }[];
@@ -151,6 +154,8 @@ function parseResearchFile(fileName: string): ResearchItem {
   if (image !== undefined && typeof image !== "string") {
     fail(file, `frontmatter "cover.image" must be a string when set`);
   }
+  const imageSize =
+    typeof image === "string" ? readLocalImageSize(image) : null;
 
   const linksRaw = data.links;
   if (!Array.isArray(linksRaw)) {
@@ -189,6 +194,9 @@ function parseResearchFile(fileName: string): ResearchItem {
       bg: bg as ResearchMeta["cover"]["bg"],
       shapes,
       ...(image !== undefined ? { image } : {}),
+      ...(imageSize
+        ? { width: imageSize.width, height: imageSize.height }
+        : {}),
     },
     ...(author !== undefined ? { author: author.trim() } : {}),
     links,
