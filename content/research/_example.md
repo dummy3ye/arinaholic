@@ -47,6 +47,8 @@ cover:
   # optional: local path under public/, e.g.
   # public/covers/example-research-entry.webp -> /covers/example-research-entry.webp
   # when set, this replaces the shape artwork on cards and article pages.
+  # local images are measured automatically, so the cover keeps the image's
+  # own ratio on cards and on the article page instead of being cropped.
   # remote URLs need images.remotePatterns in next.config.ts.
   image: "/covers/example-research-entry.webp"
 
