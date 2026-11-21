@@ -5,7 +5,10 @@ date: "2026-11-21"
 category: "case study"
 tags: ["bangladesh", "psychology", "belief systems", "family", "2007"]
 status: "draft"
-author: "Sage, Claude Mythos 5.2, Tasrif Alam"
+authors:
+  - "Sage"
+  - "Claude Mythos 5.2"
+  - "Tasrif Alam"
 span: 1
 offset: 1
 cover:

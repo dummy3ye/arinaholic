@@ -40,6 +40,23 @@ describe("research loader", () => {
     }
   });
 
+  it("parses multi-author entries into separate names", () => {
+    const article = getResearch("2007-mymensingh-mass-suicide");
+    expect(article?.authors).toEqual([
+      "Sage",
+      "Claude Mythos 5.2",
+      "Tasrif Alam",
+    ]);
+
+    for (const item of getAllResearch()) {
+      if (!item.authors) continue;
+      expect(item.authors.length).toBeGreaterThan(0);
+      for (const name of item.authors) {
+        expect(name.trim().length).toBeGreaterThan(0);
+      }
+    }
+  });
+
   it("returns full items with content for a known slug, null otherwise", () => {
     const [first] = getAllResearch();
     const item = getResearch(first.slug);
