@@ -88,6 +88,60 @@ function inlineText(tokens: Token[] | undefined): string {
     .join("");
 }
 
+function escapeAttribute(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function escapeText(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+const IMAGE_ALIGNMENTS = ["left", "right", "center"] as const;
+
+function isFigureOnly(content: string): boolean {
+  let rest = content.trim();
+  if (!rest.startsWith("<figure")) return false;
+
+  while (rest.startsWith("<figure")) {
+    const end = rest.indexOf("</figure>");
+    if (end === -1) return false;
+    rest = rest.slice(end + "</figure>".length).trim();
+  }
+  return rest.length === 0;
+}
+
+function unwrapFigureParagraphs(html: string): string {
+  let result = "";
+  let cursor = 0;
+
+  while (cursor < html.length) {
+    const open = html.indexOf("<p>", cursor);
+    if (open === -1) {
+      result += html.slice(cursor);
+      break;
+    }
+    const close = html.indexOf("</p>", open + 3);
+    if (close === -1) {
+      result += html.slice(cursor);
+      break;
+    }
+
+    result += html.slice(cursor, open);
+    const inner = html.slice(open + 3, close);
+    result += isFigureOnly(inner) ? inner.trim() : html.slice(open, close + 4);
+    cursor = close + 4;
+  }
+
+  return result;
+}
+
 export function renderMarkdown(source: string): RenderedMarkdown {
   const { masked, math } = extractMath(source);
   const toc: TocEntry[] = [];
@@ -113,6 +167,25 @@ export function renderMarkdown(source: string): RenderedMarkdown {
           ? ' target="_blank" rel="noopener noreferrer"'
           : "";
         return `<a href="${href}"${attrs}>${inner}</a>`;
+      },
+      image({ href, title, text }) {
+        const segments = (title ?? "")
+          .split("|")
+          .map((segment) => segment.trim());
+        const caption = segments[0] ?? "";
+        const options = segments.slice(1).map((option) => option.toLowerCase());
+        const alignment = IMAGE_ALIGNMENTS.find((item) =>
+          options.includes(item),
+        );
+
+        const image = `<img src="${escapeAttribute(href)}" alt="${escapeAttribute(text)}" loading="lazy" decoding="async">`;
+        if (!caption && !alignment) return image;
+
+        const alignAttr = alignment ? ` data-align="${alignment}"` : "";
+        const captionTag = caption
+          ? `<figcaption>${escapeText(caption)}</figcaption>`
+          : "";
+        return `<figure${alignAttr}>${image}${captionTag}</figure>`;
       },
     },
   });
@@ -140,6 +213,16 @@ export function renderMarkdown(source: string): RenderedMarkdown {
   html = html.replace(
     /<table[\s\S]*?<\/table>/g,
     (table) => `<div class="table-wrap">${table}</div>`,
+  );
+
+  // Images are inline tokens, so marked wraps figures in paragraphs. Unwrap
+  // them to keep the HTML valid and let CSS own the figure layout.
+  html = unwrapFigureParagraphs(html);
+
+  // <!-- grid --> ... <!-- /grid --> groups consecutive figures side by side.
+  html = html.replace(
+    /<!--\s*grid\s*-->([\s\S]*?)<!--\s*\/\s*grid\s*-->/g,
+    (_match, inner: string) => `<div data-figure-grid>${inner}</div>`,
   );
 
   return { html, toc };

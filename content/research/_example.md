@@ -121,6 +121,21 @@ Images can be referenced from `public`:
 
 ![a labelled diagram](/covers/example-research-entry.webp)
 
+A title adds a caption. Add `| left`, `| right` or `| center` to control the
+placement:
+
+![diagram floated left](/covers/example-research-entry.webp "figure 1: the pipeline | left")
+
+Wrap two or more captioned images between grid markers to place them side by
+side:
+
+<!-- grid -->
+
+![first view](/covers/example-research-entry.webp "front view | left")
+![second view](/covers/example-research-entry.webp "side view | right")
+
+<!-- /grid -->
+
 ---
 
 ## notes

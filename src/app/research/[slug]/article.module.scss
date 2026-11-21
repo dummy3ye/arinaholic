@@ -99,6 +99,7 @@ $research-body-font:
 .body {
   grid-area: body;
   min-width: 0;
+  display: flow-root;
   font-family: $research-body-font;
   font-size: 1.125rem;
   line-height: 1.7;
@@ -221,6 +222,53 @@ $research-body-font:
     max-width: 100%;
   }
 
+  figure {
+    margin: 1.6em 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  figure[data-align="left"],
+  figure[data-align="right"] {
+    width: min(46%, 340px);
+    margin-top: 0.4em;
+    margin-bottom: 1em;
+  }
+
+  figure[data-align="left"] {
+    float: left;
+    margin-right: 1.5rem;
+  }
+
+  figure[data-align="right"] {
+    float: right;
+    margin-left: 1.5rem;
+  }
+
+  figure[data-align="center"] {
+    width: 100%;
+    text-align: center;
+  }
+
+  [data-figure-grid] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(12px, 2vw, 24px);
+    align-items: start;
+    margin: 1.6em 0;
+
+    figure,
+    figure[data-align] {
+      float: none;
+      width: 100%;
+      margin: 0;
+    }
+  }
+
   figcaption {
     color: var(--muted);
     font-size: 0.85rem;
@@ -331,5 +379,12 @@ $research-body-font:
 
   .body {
     font-size: 1.0625rem; // keep at least 17px
+
+    figure[data-align="left"],
+    figure[data-align="right"] {
+      float: none;
+      width: 100%;
+      margin-inline: 0;
+    }
   }
 }
