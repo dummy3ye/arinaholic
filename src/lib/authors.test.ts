@@ -7,16 +7,14 @@ describe("formatAuthors", () => {
   });
 
   it("prints a single author as-is", () => {
-    expect(formatAuthors(["Sage"])).toBe("Sage");
+    expect(formatAuthors(["one"])).toBe("one");
   });
 
   it("joins two authors with and", () => {
-    expect(formatAuthors(["Sage", "Tasrif Alam"])).toBe("Sage and Tasrif Alam");
+    expect(formatAuthors(["one", "two"])).toBe("one and two");
   });
 
   it("uses commas and a final and for three or more authors", () => {
-    expect(formatAuthors(["Sage", "Claude Mythos 5.2", "Tasrif Alam"])).toBe(
-      "Sage, Claude Mythos 5.2 and Tasrif Alam",
-    );
+    expect(formatAuthors(["one", "two", "three"])).toBe("one, two and three");
   });
 });

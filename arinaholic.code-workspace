@@ -7,6 +7,112 @@
   ],
   "settings": {
     "explorer.compactFolders": false,
-    "workbench.editor.enablePreview": false
+    "workbench.editor.enablePreview": false,
+    "frontMatter.taxonomy.fieldGroups": [
+      {
+        "id": "links_group",
+        "fields": [
+          {
+            "title": "label",
+            "name": "label",
+            "type": "string"
+          },
+          {
+            "title": "href",
+            "name": "href",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "frontMatter.taxonomy.contentTypes": [
+      {
+        "name": "default",
+        "pageBundle": false,
+        "fields": [
+          {
+            "title": "title",
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "title": "summary",
+            "name": "summary",
+            "type": "string"
+          },
+          {
+            "title": "date",
+            "name": "date",
+            "type": "datetime"
+          },
+          {
+            "title": "category",
+            "name": "category",
+            "type": "categories"
+          },
+          {
+            "title": "tags",
+            "name": "tags",
+            "type": "tags"
+          },
+          {
+            "title": "status",
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "title": "authors",
+            "name": "authors",
+            "type": "choice",
+            "choices": ["Sage", "Claude Fable 5.2", "Tasrif Alam"]
+          },
+          {
+            "title": "span",
+            "name": "span",
+            "type": "number"
+          },
+          {
+            "title": "offset",
+            "name": "offset",
+            "type": "number"
+          },
+          {
+            "title": "cover",
+            "name": "cover",
+            "type": "fields",
+            "fields": [
+              {
+                "title": "bg",
+                "name": "bg",
+                "type": "string"
+              },
+              {
+                "title": "shapes",
+                "name": "shapes",
+                "type": "choice",
+                "choices": ["sage-large"]
+              },
+              {
+                "title": "image",
+                "name": "image",
+                "type": "image"
+              }
+            ]
+          },
+          {
+            "title": "links",
+            "name": "links",
+            "type": "block",
+            "fieldGroup": ["links_group"]
+          }
+        ]
+      }
+    ],
+    "frontMatter.git.enabled": true,
+    "frontMatter.content.pageFolders": [
+      {
+        "path": "[[workspace]]/content/research"
+      }
+    ]
   }
 }

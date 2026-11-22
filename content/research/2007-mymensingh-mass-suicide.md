@@ -1,25 +1,36 @@
 ---
-title: "the adam family case: nine deaths; a mass suicide on a railway line in mymensingh"
+title: the adam family case; mass suicide on mymensingh railway line
 summary: "a case study of the 11 july 2007 deaths in kashor, mymensingh: the family, the invented religion, the money collapse, the two deaths before it, the notes, the children, and every competing explanation, including the ones that do not fit."
-date: "2026-11-21"
-category: "case study"
-tags: ["bangladesh", "psychology", "belief systems", "family", "2007"]
-status: "published"
+date: 2026-11-21
+category: case study
+tags:
+  - bangladesh
+  - psychology
+  - belief systems
+  - family
+  - "2007"
+  - new religion
+status: published
 authors:
-  - "Sage"
-  - "Claude Fable 5.2"
-  - "Tasrif Alam"
+  - Sage
+  - Claude Fable 5.2
+  - Tasrif Alam
 span: 1
 offset: 1
 cover:
-  bg: "red"
-  shapes: ["sage-large"]
-  image: "/covers/MymensinghRailway.jpg"
+  bg: red
+  shapes:
+    - sage-large
+  image: /covers/MymensinghRailway.jpg
 links:
-- { label: "wikipedia", href: "https://en.wikipedia.org/wiki/2007_Mymensingh_mass_suicide" }
-- { label: "selim 2010", href: "https://doi.org/10.1080/13674670903061230" }
-- { label: "daily star 2007", href: "https://www.thedailystar.net/magazine/2007/08/02/sreport.htm" }
-- { label: "bdnews24 2007", href: "https://bdnews24.com/bangladesh/mymensingh-joint-suicide-defies-common-sense" }
+  - label: wikipedia
+    href: https://en.wikipedia.org/wiki/2007_Mymensingh_mass_suicide
+  - label: nasima selim (2010)
+    href: https://doi.org/10.1080/13674670903061230
+  - label: daily star (2007)
+    href: https://www.thedailystar.net/magazine/2007/08/02/sreport.htm
+  - label: bdnews24 (2007)
+    href: https://bdnews24.com/bangladesh/mymensingh-joint-suicide-defies-common-sense
 ---
 
 ## summary
@@ -238,7 +249,7 @@ nasima selim (2010) approached the case as both a physician and an anthropologis
 
 **4. murder.** mobi's allegation deserves to be recorded because she is the sole surviving immediate family member. however, it runs directly against the physical and documentary record: hundreds of pages of multi-authored diaries written over five months in two languages, near-identical english notes by the children, a trench dug inside the compound, coffins prepared in advance, and the train driver's eyewitness account of people walking onto the tracks and holding each other. furthermore, the diaries themselves reveal why mobi was excluded: the family regarded her as an enemy ("baby muhammad shaitan"). her claim reads most plausibly as a surviving sister's refusal to accept that her family chose to die, or an attempt to shield their memory from the stigma of suicide and apostasy.
 
-### the part nobody likes: the children
+### the childrens
 the verbatim transcripts of "montu" and "munni's" notes in selim's paper settle a crucial question: the children did not compose independent philosophical testaments. their english notes are virtually identical templates, down to the same misspellings, appended right after their aunt's 36-page english text. whether dictated by an adult or copied line by line, they prove indoctrination, not consent. children aged eight to ten living inside a sealed household where every adult sleeps by day, channels dead relatives by night, and teaches that the outside world is controlled by demons have no exit and no alternative reality. calling their deaths "suicide" is a legal and journalistic convenience; ethically, the adults took them onto the tracks.
 
 ### what does not add up
@@ -281,7 +292,7 @@ it does not show that religious unorthodoxy causes suicide, that the villagers w
 2024  bangladeshi series chokro (inspired by the case) released
 ```
 
-**open questions.**
+**few unsolved questions.**
 - did the ninth body on the tracks belong to the son rahat (20) or the live-in disciple leena (18)?
 - what was written on the missing final pages of morsheda's and leena's diaries?
 - why did the family dig a grave-like trench and prepare coffins at home if they intended to walk onto the railway line?
@@ -289,8 +300,8 @@ it does not show that religious unorthodoxy causes suicide, that the villagers w
 - what do the original mymensingh railway police inquest files and post-mortem reports record?
 
 **sources.**
-- nasima selim, *"an extraordinary truth? the ādam 'suicide' notes from bangladesh,"* *mental health, religion & culture* 13, no. 3 (2010): 223–244, doi: `10.1080/13674670903061230`.
-- kamran reza chowdhury, *"driven to their deaths,"* *star weekend magazine* (*the daily star*), 2 august 2007.
-- jahangir kabir jewel, *"mymensingh joint suicide defies common sense,"* *bdnews24.com*, 12 july 2007.
-- *the daily star* (front page), *"belief in rebirth might have driven them to commit suicide,"* 13 july 2007.
-- wikipedia, *"2007 mymensingh mass suicide"* (cross-checked against the primary reports above).
+- i. nasima selim, *"an extraordinary truth? the ādam 'suicide' notes from bangladesh,"* *mental health, religion & culture* 13, no. 3 (2010): 223–244, doi: `10.1080/13674670903061230`.
+- ii. kamran reza chowdhury, *"driven to their deaths,"* *star weekend magazine* (*the daily star*), 2 august 2007.
+- iii. jahangir kabir jewel, *"mymensingh joint suicide defies common sense,"* *bdnews24.com*, 12 july 2007.
+- iv. *the daily star* (front page), *"belief in rebirth might have driven them to commit suicide,"* 13 july 2007.
+- v. wikipedia, *"2007 mymensingh mass suicide"* (cross-checked against the primary reports above).

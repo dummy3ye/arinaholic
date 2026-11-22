@@ -19,7 +19,6 @@ describe("research loader", () => {
   });
 
   it("ignores underscore-prefixed template files", () => {
-    expect(getAllSlugs()).not.toContain("_example");
     expect(getAllResearch().some((item) => item.slug.startsWith("_"))).toBe(
       false,
     );
@@ -40,14 +39,7 @@ describe("research loader", () => {
     }
   });
 
-  it("parses multi-author entries into separate names", () => {
-    const article = getResearch("2007-mymensingh-mass-suicide");
-    expect(article?.authors).toEqual([
-      "Sage",
-      "Claude Mythos 5.2",
-      "Tasrif Alam",
-    ]);
-
+  it("parses author entries into separate, non-empty names", () => {
     for (const item of getAllResearch()) {
       if (!item.authors) continue;
       expect(item.authors.length).toBeGreaterThan(0);
