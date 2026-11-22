@@ -7,6 +7,9 @@ test("the site header hides on scroll down and returns on scroll up", async ({
 
   const siteHeader = page.locator("body > header");
   await expect(siteHeader).toBeVisible();
+  // The scroll handler is attached during hydration; scrolling before that
+  // leaves lastY at the final position, so the header never hides.
+  await expect(siteHeader).toHaveAttribute("data-scrollable", "true");
 
   const scrollTo = async (top: number) => {
     await page.evaluate(

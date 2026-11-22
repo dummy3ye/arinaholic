@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { formatResearchDate } from "./dates";
 import { getAllResearch, getAllSlugs, getResearch } from "./research";
-import { COVER_SHAPES } from "./research-covers";
+import { COVER_BGS, COVER_SHAPE_NAMES } from "./research-covers";
 
 describe("research loader", () => {
   it("returns every item sorted by date, most recent first", () => {
@@ -32,9 +32,9 @@ describe("research loader", () => {
       expect([1, 2]).toContain(item.span);
       expect([0, 1, 2, 3]).toContain(item.offset);
       expect(["published", "draft"]).toContain(item.status);
-      expect(["cream", "blue", "sage", "red"]).toContain(item.cover.bg);
+      expect(COVER_BGS).toContain(item.cover.bg);
       for (const shape of item.cover.shapes) {
-        expect(Object.keys(COVER_SHAPES)).toContain(shape);
+        expect(COVER_SHAPE_NAMES).toContain(shape);
       }
     }
   });
