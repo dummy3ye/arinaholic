@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "biomejs.biome",
+    "oxc.oxc-vscode",
     "vitest.explorer",
     "bradlc.vscode-tailwindcss",
     "stylelint.vscode-stylelint",

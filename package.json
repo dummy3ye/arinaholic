@@ -11,6 +11,8 @@
     "start": "next start",
     "lint": "biome ci --formatter-enabled=false .",
     "lint:fix": "biome check --write --formatter-enabled=false .",
+    "lint:oxlint": "oxlint --deny-warnings",
+    "lint:oxlint:fix": "oxlint --fix",
     "lint:styles": "stylelint \"src/**/*.{css,scss}\"",
     "lint:commit": "commitlint --from HEAD~1 --to HEAD --verbose",
     "format": "biome format --write .",
@@ -24,7 +26,7 @@
     "knip": "knip",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "check": "bun run lint && bun run lint:styles && bun run knip && bun run format:check && bun run typecheck && bun run test && bun run build && bun run build-storybook"
+    "check": "bun run lint && bun run lint:oxlint && bun run lint:styles && bun run knip && bun run format:check && bun run typecheck && bun run test && bun run build && bun run build-storybook"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.15.1",
@@ -54,6 +56,7 @@
     "@vitest/coverage-istanbul": "5.1.1",
     "jsdom": "^31.0.1",
     "knip": "^6.47.0",
+    "oxlint": "1.94.0",
     "sass": "1.108.2",
     "storybook": "10.6.8",
     "stylelint": "18.1.0",

@@ -46,6 +46,20 @@
     "hide": "never"
   },
   {
+    "label": "lint:oxlint",
+    "command": "bun",
+    "args": ["run", "lint:oxlint"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "lint:oxlint:fix",
+    "command": "bun",
+    "args": ["run", "lint:oxlint:fix"],
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
     "label": "lint:styles",
     "command": "bun",
     "args": ["run", "lint:styles"],
