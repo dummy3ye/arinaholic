@@ -1,6 +1,6 @@
 {
-  "name": "arinaholic (Node 24 + Bun 1.4.2)",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:5-24-bookworm",
+  "name": "arinaholic (Node 26 + Bun 1.4.2)",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:5-26-bookworm",
   "features": {
     "ghcr.io/devcontainers-extra/features/bun:1": {
       "version": "1.4.2"
