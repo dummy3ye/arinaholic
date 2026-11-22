@@ -7,8 +7,8 @@ tags: ["bangladesh", "psychology", "belief systems", "family", "2007"]
 status: "published"
 authors:
   - "Sage"
-  - "Claude Mythos 5.2"
-  - "Md. Tasrif Alam"
+  - "Claude Fable 5.2"
+  - "Tasrif Alam"
 span: 1
 offset: 1
 cover:
