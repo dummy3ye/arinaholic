@@ -2,5 +2,5 @@
   "$schema": "https://frontmatter.codes/frontmatter.schema.json",
   "frontMatter.framework.id": "next",
   "frontMatter.content.publicFolder": "public",
-  "frontMatter.preview.host": "http://localhost:3003"
+  "frontMatter.preview.host": "http://localhost:3000"
 }
