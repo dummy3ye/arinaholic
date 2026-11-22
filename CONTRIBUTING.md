@@ -27,6 +27,23 @@ in `.zed/`. Install the [Biome extension](https://zed.dev/extensions/biome) to
 get formatting and organize-imports on save. Run tasks such as `check`,
 `test:e2e`, and `storybook` from Zed's task launcher.
 
+## Linting
+
+Biome handles formatting and general linting, Oxlint adds a fast
+JavaScript/TypeScript correctness and performance pass, and Stylelint covers
+SCSS/CSS. Run them individually with:
+
+```sh
+bun run lint
+bun run lint:oxlint
+bun run lint:styles
+```
+
+Oxlint's rules live in `.oxlintrc.json`; `bun run lint:oxlint:fix` applies its
+safe fixes. VS Code contributors get the Oxc extension through the workspace
+recommendations, and Zed users can install the Oxc extension from the Zed
+extension registry.
+
 ## Tests
 
 Vitest specs live beside the code as `*.test.ts(x)`:
@@ -62,9 +79,9 @@ Run the full local check suite:
 bun run check
 ```
 
-This runs Biome, Stylelint, Knip, TypeScript, Vitest, the Next.js build, and
-the Storybook build. Playwright specs run separately as described above. The
-repository hooks also run the relevant checks automatically.
+This runs Biome, Oxlint, Stylelint, Knip, TypeScript, Vitest, the Next.js
+build, and the Storybook build. Playwright specs run separately as described
+above. The repository hooks also run the relevant checks automatically.
 
 ## Commits
 

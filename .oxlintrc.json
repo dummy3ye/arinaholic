@@ -1,0 +1,36 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "ignorePatterns": [
+    ".next/**",
+    "coverage/**",
+    "playwright-report/**",
+    "storybook-static/**",
+    "test-results/**",
+    "_legacy/**",
+    "plans/**",
+    "bun.lock",
+    "next-env.d.ts"
+  ],
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": true
+  },
+  "plugins": ["eslint", "typescript", "unicorn", "oxc", "react", "nextjs"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/refs": "off",
+    "eslint/no-await-in-loop": "off",
+    "eslint/no-shadow": "off",
+    "oxc/erasing-op": "off",
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/no-array-reverse": "off",
+    "unicorn/no-array-sort": "off",
+    "unicorn/prefer-set-has": "off"
+  }
+}
