@@ -1,7 +1,7 @@
 ---
 title: the adam family case; mass suicide on mymensingh railway line
 summary: "a case study of the 11 july 2007 deaths in kashor, mymensingh: the family, the invented religion, the money collapse, the two deaths before it, the notes, the children, and every competing explanation, including the ones that do not fit."
-date: 2026-11-21
+date: "2026-11-21"
 category: case study
 tags:
   - bangladesh
