@@ -1,0 +1,15 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "formatter": true,
+  "watcher": {
+    "ignore": [
+      ".next/**",
+      "coverage/**",
+      "storybook-static/**",
+      "test-results/**",
+      "playwright-report/**",
+      "blob-report/**",
+      "tsconfig.tsbuildinfo"
+    ]
+  }
+}
