@@ -4,7 +4,7 @@ Thanks for helping improve Arinaholic.
 
 ## Local setup
 
-You need Bun 1.4.2 and Node 24.
+You need Bun 1.4.2 and Node 26.
 
 ```sh
 bun install
@@ -20,7 +20,7 @@ bun run storybook
 
 If you use VS Code, open `arinaholic.code-workspace`, then run **Dev Containers:
 Open Workspace in Container...**. The dev container installs Bun 1.4.2 and Node
-24, installs dependencies, and forwards ports `3000` and `6006`.
+26, installs dependencies, and forwards ports `3000` and `6006`.
 
 If you use Zed, the project-local settings, tasks, and debug configurations are
 in `.zed/`. Install the [Biome extension](https://zed.dev/extensions/biome) to
