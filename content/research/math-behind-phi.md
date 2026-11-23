@@ -11,7 +11,7 @@ offset: 0
 cover:
   bg: "sage"
   shapes: ["blue-large", "red-small"]
-  image: /covers/math-behind-phi.jpeg 
+  image: /covers/math-behind-phi.jpeg
 links:
   - label: "wikipedia"
     href: "https://en.wikipedia.org/wiki/Golden_ratio"
@@ -194,10 +194,10 @@ So why does it still feel pretty? My honest guess is that the beauty is in the m
 
 ### try it yourself
 
-- [x] solve $x^2 = x + 1$ by hand
-- [ ] run the python snippet and watch the ratios settle
-- [ ] draw a golden rectangle and cut off five squares
-- [ ] plot seeds at $n \times 137.5^\circ$ and then at $n \times 137^\circ$, and compare
+- solve $x^2 = x + 1$ by hand
+- run the python snippet and watch the ratios settle
+- draw a golden rectangle and cut off five squares
+- plot seeds at $n \times 137.5^\circ$ and then at $n \times 137^\circ$, and compare
 
 ---
 
