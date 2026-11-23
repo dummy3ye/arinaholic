@@ -16,7 +16,7 @@ export default function SetupPage() {
   return (
     <PageShell route="setup">
       <section className="page setup-page">
-        <Hero title="setup." lede="from source to silicon. hover anything." />
+        <Hero title="setup." lede="hover anything." />
         <div className="sec">
           <PipelineLoader
             graph={compileGraph}

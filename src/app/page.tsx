@@ -14,15 +14,15 @@ export default function HomePage() {
       <section className="page">
         <Hero
           title="coffee, terminals n debugging."
-          lede="i’m sage, i also go by @arinaholic n @dummy3ye. i build embedded systems and simulations, and write fast tools for the terminal. other than that on weekends i contiibute and test patches to the linux kernel."
+          lede="embedded systems and simulations; writing tools for the terminal. and on weekends i being on the lkms."
         />
         <div className="sec">
           <div className="cols">
             <div>
               <h2>works</h2>
               <p>
-                a black hole in opengl, a notebook for scientific publishing, a
-                desktop shell and some smaller things.
+                blackhole sim in opengl, lib for scientific publishing, a
+                desktop shell n more things.
               </p>
               <Link className="link" href="/works">
                 see what i made

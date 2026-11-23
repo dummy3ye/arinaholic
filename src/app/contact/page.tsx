@@ -21,7 +21,7 @@ export default function ContactPage() {
         <Hero
           title="say hi."
           small
-          lede="email is best for kernel and project questions. discord is good for chatting."
+          lede="only for j*b and if any work related to lkms."
         />
         <div className="sec">
           <a className="big contactMail" href="mailto:hi@arinaholic.me">
