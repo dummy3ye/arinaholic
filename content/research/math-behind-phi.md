@@ -81,7 +81,7 @@ Draw a rectangle with sides $1$ and $\varphi$. Cut off a $1 \times 1$ square. Wh
 
 So the leftover piece is the same shape as the whole thing, only smaller by a factor of $\frac{1}{\varphi}$. You can cut off a square from that one too, and keep going forever.
 
-![a golden rectangle cut into squares, with a spiral drawn through them](/covers/golden-ratio-rectangle.svg "figure 1: each cut leaves a smaller golden rectangle | center")
+![a golden rectangle cut into squares, with a spiral drawn through them](/svgs/golden-ratio-rectangle.svg "figure 1: each cut leaves a smaller golden rectangle | center")
 
 Draw a quarter circle inside each square and the arcs join into a spiral. Strictly speaking this is only close to the real golden spiral, which is a logarithmic spiral that grows by a factor of $\varphi$ every quarter turn:
 
@@ -110,7 +110,7 @@ That is the same rule that powers of $\varphi$ follow, and it is not an accident
 | 7  | 1.6154        | -0.0026         |
 | 8  | 1.6190        | +0.0010         |
 
-![ratios of neighbouring fibonacci numbers zigzagging toward the golden ratio](/covers/golden-ratio-fibonacci.svg "figure 2: the ratios jump above and below φ, getting closer every step | center")
+![ratios of neighbouring fibonacci numbers zigzagging toward the golden ratio](/svgs/golden-ratio-fibonacci.svg "figure 2: the ratios jump above and below φ, getting closer every step | center")
 
 There is an exact formula for the $n$-th Fibonacci number, named after Binet:
 
@@ -133,7 +133,7 @@ for n in range(1, 13):
 
 Take a regular pentagon with side length 1 and draw its diagonals. Each diagonal is exactly $\varphi$ times as long as a side.
 
-![a regular pentagon with one diagonal and one side highlighted](/covers/golden-ratio-pentagon.svg "figure 3: diagonal over side is exactly φ | center")
+![a regular pentagon with one diagonal and one side highlighted](/svgs/golden-ratio-pentagon.svg "figure 3: diagonal over side is exactly φ | center")
 
 Here is a short proof. Pick four neighbouring corners $A, B, C, D$. They sit on a circle, so Ptolemy's theorem applies:
 
@@ -167,8 +167,8 @@ $$
 
 <!-- grid -->
 
-![seeds placed with a turn of 137.5 degrees fill the disc evenly](/covers/golden-ratio-seeds-golden.svg "137.5° turn, even packing | left")
-![seeds placed with a turn of 90 degrees fall into four spokes](/covers/golden-ratio-seeds-quarter.svg "90° turn, four wasted spokes | right")
+![seeds placed with a turn of 137.5 degrees fill the disc evenly](/svgs/golden-ratio-seeds-golden.svg "137.5° turn, even packing | left")
+![seeds placed with a turn of 90 degrees fall into four spokes](/svgs/golden-ratio-seeds-quarter.svg "90° turn, four wasted spokes | right")
 
 <!-- /grid -->
 
