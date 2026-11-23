@@ -29,13 +29,13 @@ export default function HomePage() {
               </Link>
             </div>
             <div>
-              <h2>kernel</h2>
+              <h2>research</h2>
               <p>
-                small fixes in wifi, media and staging drivers. everything is
-                public on the mailing list.
+                notes on math, systems and other things i keep coming back to.
+                the long versions live here.
               </p>
-              <Link className="link" href="/works/kernel">
-                read about the patches
+              <Link className="link" href="/research">
+                read the research
               </Link>
             </div>
             <div>
