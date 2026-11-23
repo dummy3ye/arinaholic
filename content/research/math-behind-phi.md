@@ -194,10 +194,10 @@ So why does it still feel pretty? My honest guess is that the beauty is in the m
 
 ### try it yourself
 
-- solve $x^2 = x + 1$ by hand
-- run the python snippet and watch the ratios settle
-- draw a golden rectangle and cut off five squares
-- plot seeds at $n \times 137.5^\circ$ and then at $n \times 137^\circ$, and compare
+- i. solve $x^2 = x + 1$ by hand
+- ii. run the python snippet and watch the ratios settle
+- iii. draw a golden rectangle and cut off five squares
+- iv. plot seeds at $n \times 137.5^\circ$ and then at $n \times 137^\circ$, and compare
 
 ---
 
