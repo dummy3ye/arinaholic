@@ -1,6 +1,7 @@
 node_modules
 .next
 coverage
+.nyc_output
 out
 storybook-static
 test-results
@@ -10,5 +11,5 @@ playwright/.cache
 .env*.local
 *.tsbuildinfo
 .DS_Store
-CLAUDE.local.md
+**.local.md
 .claude/settings.local.json
